@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@fontsource/tinos": "^5.1.0",
+    "@vercel/analytics": "^1.5.0",
     "astro": "^4.16.12",
     "typescript": "^5.6.3"
   }

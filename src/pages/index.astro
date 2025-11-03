@@ -2,12 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import '@fontsource/tinos';
 import '../globals.css';
+import Analytics from '@vercel/analytics/astro'
 ---
 
 <Layout title="Andrew Durnford">
-	<main>
-		<h1>Andrew Durnford</h1>
-		<div class="links">
+    <main>
+        <h1>Andrew Durnford</h1>
+        <div class="links">
             <a
               class="iconLink"
               href="https://github.com/andrewhdurnford"
@@ -20,7 +21,8 @@ import '../globals.css';
                 width="25px"
                 alt="github icon"
               />
-			<a
+            </a>
+            <a
               class="iconLink"
               href="https://www.linkedin.com/in/durnford/"
               target="_blank"
@@ -60,75 +62,98 @@ import '../globals.css';
               />
             </a>
           </div>
-		<h2>About</h2>
-		<div class="about">
-			Hi, I'm Andrew, a second year double degree student in Computer Science and Ivey at Western University. 
-			With a focus on Full Stack Development, Machine Learning, and Data Science, I
-      bring ideas that interest me to life — from tools for digital memories to predictive modelling in esports.
-		</div>
-		<h2>Projects</h2>
-		<ul>
-			<li>
-				<a href="https://www.sunflowercapital.co/" target="_blank">
-				<span>Sunflower Capital — Landing page built with Next.js</span>
-				</a>
-			</li>
-			<li>
-				<a href="https://github.com/andrewhdurnford/valPRED" target="_blank">
-				<span>ValPRED — Valorant professional match predictor using Python, Pandas, Sklearn</span>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.retrospect.space/" target="_blank">
-				<span>Retrospect Mobile App — Swift mobile app to create and share time capsules</span>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.unfollowed.lol/" target="_blank">
-				<span>Unfollowed.lol — Chrome extension tracking Instagram followers & unfollowers</span>
-				</a>
-			</li>
-		</ul>
-	</main>
+        <h2>About</h2>
+        <div class="about">
+      Hi, I'm Andrew, a third year double degree student in Computer Science and Ivey Honours Business Administration at Western University. 
+      I specialize in Full Stack Development, with experience building consumer applications, predictive analytics systems, and internal developer tools.
+        </div>
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <a href="https://github.com/andrewhdurnford/sunflower-nextjs" target="_blank">
+                <span>Sunflower Capital — Landing page built with Next.js</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/andrewhdurnford/valPRED" target="_blank">
+                <span>ValPRED — Valorant professional match predictor using Python, Pandas, Sklearn</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/TenacityLabs/retrospect-frontend" target="_blank">
+                <span>Retrospect Mobile App — Swift mobile app to create and share time capsules</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/TenacityLabs/unfollowed.lol" target="_blank">
+                <span>Unfollowed.lol — Chrome extension tracking Instagram followers & unfollowers</span>
+                </a>
+            </li>
+        </ul>
+    </main>
+  <Analytics />
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 700px;
-		max-width: calc(100% - 4rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	h1 {
-		font-family: "tinos";
-		font-size: 3rem;
-		font-weight: 400;
-		color: #F4F4F9;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 0.25em;
-		margin-top: 1.5em;
-	}
-	h2 {
-		font-family: "lexend";
-		font-weight: 400;
-		font-size: 1.5rem;
-	}
-	.about {
-		font-family: "lexend";
-		font-size: 1rem;
-		font-weight: 300;
-		line-height: 1.75;
-		color: #F4F4F9;
-    text-align: justify;
-	}
+    main {
+        margin: auto;
+        padding: 1rem;
+        width: 700px;
+        max-width: calc(100% - 4rem);
+        color: white;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+  
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
 
-	.links {
+    /* headings and content styles */
+    h1 {
+        font-family: "tinos";
+        font-size: 3rem;
+        font-weight: 400;
+        color: #F4F4F9;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 0.25em;
+        margin-top: 1.5em;
+    }
+
+    h2 {
+        font-family: "lexend";
+        font-weight: 400;
+        font-size: 1.5rem;
+    }
+
+    .about {
+        font-family: "lexend";
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.75;
+        color: #F4F4F9;
+        text-align: justify;
+    }
+
+  @media (max-width: 480px) {
+    .about {
+      text-align: left;
+    }
+  }
+
+    .links {
         display: flex;
-    	justify-content: center;
+        justify-content: center;
     }
 
     a:link, a:visited {
@@ -158,22 +183,23 @@ import '../globals.css';
         margin: auto;
     }
 
-	ul {
+    ul {
         margin: 0 auto;
         padding: 0;
         list-style-type: none;
       }
-	
-	li {
-		font-family: "lexend";
-		font-size: 1rem;
-		font-weight: 300;
-		color: #F4F4F9;
-		transition: transform 0.25s;
-		text-decoration: none;
-		line-height: 2;
-	}
-	li:hover {
-		transform: translateX(20px);
-	}
+    
+    li {
+        font-family: "lexend";
+        font-size: 1rem;
+        font-weight: 300;
+        color: #F4F4F9;
+        transition: transform 0.25s;
+        text-decoration: none;
+        line-height: 2;
+    }
+
+    li:hover {
+        transform: translateX(20px);
+    }
 </style>
