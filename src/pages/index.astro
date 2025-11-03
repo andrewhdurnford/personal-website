@@ -67,8 +67,15 @@ import Analytics from '@vercel/analytics/astro'
       Hi, I'm Andrew, a third year double degree student in Computer Science and Ivey Honours Business Administration at Western University. 
       I specialize in Full Stack Development, with experience building consumer applications, predictive analytics systems, and internal developer tools.
         </div>
+        <h2>Experience</h2>
+        <ul class="experience">
+            <li>
+                <span class="experience-title">PointClickCare — Software Engineering Intern (Platform)</span>
+                <span class="experience-date">May 2025 - Aug 2025</span>
+            </li>
+        </ul>
         <h2>Projects</h2>
-        <ul>
+        <ul class="projects">
             <li>
                 <a href="https://github.com/andrewhdurnford/sunflower-nextjs" target="_blank">
                 <span>Sunflower Capital — Landing page built with Next.js</span>
@@ -199,7 +206,29 @@ import Analytics from '@vercel/analytics/astro'
         line-height: 2;
     }
 
-    li:hover {
+    .projects li:hover {
         transform: translateX(20px);
+    }
+
+    .experience {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .experience li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .experience-title {
+        color: #F4F4F9;
+    }
+
+    .experience-date {
+        font-weight: 300;
+        color: #D1D1D7;
+        font-style: italic;
     }
 </style>
