@@ -1,71 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import '@fontsource/tinos';
+import '@fontsource/lilex';
 import '../globals.css';
 import Analytics from '@vercel/analytics/astro'
 ---
 
 <Layout title="Andrew Durnford">
     <main>
-        <h1>Andrew Durnford</h1>
-        <div class="links">
-            <a
-              class="iconLink"
-              href="https://github.com/andrewhdurnford"
-              target="_blank"
-              aria-label="github link"
-              ><img
-                class="icon"
-                src="./icons/githubicon.svg"
-                height="25px"
-                width="25px"
-                alt="github icon"
-              />
-            </a>
-            <a
-              class="iconLink"
-              href="https://www.linkedin.com/in/durnford/"
-              target="_blank"
-              aria-label="linkedin link"
-              ><img
-                class="icon"
-                src="./icons/linkedinicon.svg"
-                height="28px"
-                width="28px"
-                alt="linkedin icon"
-              />
-            </a>
-            <a
-              class="iconLink"
-              href="mailto:andrewhdurnford@gmail.com"
-              target="_blank"
-              aria-label="email link"
-              ><img
-                class="icon"
-                src="./icons/emailicon.svg"
-                height="25px"
-                width="25px"
-                alt="email icon"
-              />
-            </a>
-            <a
-              class="iconLink"
-              href="./resume.pdf"
-              target="_blank"
-              aria-label="resume link"
-              ><img
-                class="icon"
-                src="./icons/resumeicon.svg"
-                height="25px"
-                width="25px"
-                alt="resume icon"
-              />
-            </a>
-          </div>
-        <h2>About</h2>
+        <h2><span id="typed-name"></span><span class="cursor"></span></h2>
         <div class="about">
-      Hi, I'm Andrew, a double degree student in Computer Science and Ivey Honours Business Administration at Western University. 
-      I specialize in Full Stack Development, with experience building consumer applications, predictive analytics systems, and internal developer tools.
+      CS & Ivey Business Student at Western University, building Full Stack software. 
+      Experience building consumer applications, healthcare billing services, predictive analytics systems, and internal developer tools.
         </div>
         <h2>Experience</h2>
         <ul class="experience">
@@ -80,6 +25,18 @@ import Analytics from '@vercel/analytics/astro'
                   <a href="https://pointclickcare.com/" target="_blank">PointClickCare</a>
                    — Software Engineering Intern (Platform)</span>
                 <span class="experience-date">May 2025 - Aug 2025</span>
+            </li>
+            <li>
+                <span class="experience-title">
+                  <a href="https://www.planinternational.org/" target="_blank">Plan International</a>
+                   — Software Engineer (Pro Bono)</span>
+                <span class="experience-date">Sep 2025 - Apr 2026</span>
+            </li>
+            <li>
+                <span class="experience-title">
+                  <a href="https://github.com/TenacityLabs" target="_blank">Tenacity Labs</a>
+                   — Software Engineer</span>
+                <span class="experience-date">Apr 2024 - May 2025</span>
             </li>
         </ul>
         <h2>Projects</h2>
@@ -116,13 +73,37 @@ import Analytics from '@vercel/analytics/astro'
             </li>
         </ul>
     </main>
+    <div class="links">
+        <a class="textLink" href="https://github.com/andrewhdurnford" target="_blank">GitHub</a>
+        <span class="dot">•</span>
+        <a class="textLink" href="https://www.linkedin.com/in/durnford/" target="_blank">LinkedIn</a>
+        <span class="dot">•</span>
+        <a class="textLink" href="mailto:andrewhdurnford@gmail.com" target="_blank">Email</a>
+        <span class="dot">•</span>
+        <a class="textLink" href="./resume.pdf" target="_blank">Resume</a>
+    </div>
   <Analytics />
 </Layout>
 
+<script>
+	const nameEl = document.getElementById('typed-name') as HTMLElement;
+	const fullName = 'Andrew Durnford. ';
+	let i = 0;
+	function typeName() {
+		if (i <= fullName.length) {
+			nameEl.textContent = fullName.slice(0, i);
+			i++;
+			setTimeout(typeName, 110 + Math.random() * 80);
+		}
+	}
+	typeName();
+</script>
+
 <style>
     main {
-        margin: auto;
+        margin: auto 0;
         padding: 1rem;
+        padding-bottom: 6rem;
         width: 700px;
         max-width: calc(100% - 4rem);
         color: white;
@@ -144,25 +125,42 @@ import Analytics from '@vercel/analytics/astro'
     }
 
     /* headings and content styles */
-    h1 {
-        font-family: "tinos";
-        font-size: 3rem;
-        font-weight: 400;
-        color: #F4F4F9;
-        line-height: 1;
-        text-align: center;
-        margin-bottom: 0.25em;
-        margin-top: 1.5em;
-    }
-
     h2 {
-        font-family: "lexend";
+        font-family: "Lilex";
         font-weight: 400;
         font-size: 1.5rem;
     }
 
+    body:not(.crt-text-off) main h2:not(:first-of-type)::before {
+        content: "> ";
+        color: #63727a;
+    }
+
+    body.crt-text-off .cursor {
+        display: none;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 0.55em;
+        height: 1.1em;
+        margin-left: 0.15em;
+        background: #F4F4F9;
+        vertical-align: -0.15em;
+        box-shadow:
+            0 0 0.4em rgba(244, 244, 249, 0.6),
+            3px 0 6px rgba(255, 0, 255, 0.35),
+            -3px 0 6px rgba(0, 255, 255, 0.35);
+        animation: cursor-blink 1s steps(1) infinite;
+    }
+
+    @keyframes cursor-blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+    }
+
     .about {
-        font-family: "lexend";
+        font-family: "Lilex";
         font-size: 1rem;
         font-weight: 300;
         line-height: 1.75;
@@ -177,8 +175,23 @@ import Analytics from '@vercel/analytics/astro'
   }
 
     .links {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         display: flex;
         justify-content: center;
+        align-items: flex-end;
+        gap: 0.75rem;
+        padding-bottom: 1.5rem;
+        height: 7rem;
+        background: linear-gradient(to bottom, transparent, #001A23 65%);
+        z-index: 1;
+    }
+
+    .dot {
+        color: #D1D1D7;
+        font-size: 0.7rem;
     }
 
     a:link, a:visited {
@@ -189,23 +202,12 @@ import Analytics from '@vercel/analytics/astro'
     a:hover, a:active {
         color: white;
         text-decoration: underline;
-        cursor: pointer;
     }
 
-    .iconLink {
-        transition: transform 0.25s;
-        padding: 0px 10px;
-        line-height: 35px;
-    }
-
-    .iconLink:hover {
-        transform: scale(1.25);
-    }
-
-    .icon {
-        vertical-align: middle;
-        display: inline-block;
-        margin: auto;
+    .textLink {
+        font-family: "Lilex";
+        font-size: 0.85rem;
+        font-weight: 300;
     }
 
     ul {
@@ -215,8 +217,8 @@ import Analytics from '@vercel/analytics/astro'
       }
     
     li {
-        font-family: "lexend";
-        font-size: 1rem;
+        font-family: "Lilex";
+        font-size: 0.85rem;
         font-weight: 300;
         color: #F4F4F9;
         transition: transform 0.25s;
@@ -235,6 +237,7 @@ import Analytics from '@vercel/analytics/astro'
         justify-content: space-between;
         align-items: baseline;
     }
+
 
     .experience-title {
         color: #F4F4F9;

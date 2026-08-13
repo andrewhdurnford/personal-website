@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/lilex": "^5.3.0",
     "@fontsource/tinos": "^5.1.0",
     "@vercel/analytics": "^1.5.0",
     "astro": "^4.16.12",
