@@ -1,99 +1,98 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '@fontsource/lilex';
-import '../globals.css';
 import Analytics from '@vercel/analytics/astro'
 ---
 
 <Layout title="Andrew Durnford">
     <main>
         <h2><span id="typed-name"></span><span class="cursor"></span></h2>
+        <div class="links">
+            <a class="textLink" href="https://github.com/andrewhdurnford" target="_blank">GitHub</a>
+            <span class="dot">/</span>
+            <a class="textLink" href="https://www.linkedin.com/in/durnford/" target="_blank">LinkedIn</a>
+            <span class="dot">/</span>
+            <a class="textLink" href="mailto:andrewhdurnford@gmail.com" target="_blank">Email</a>
+            <span class="dot">/</span>
+            <a class="textLink" href="./resume.pdf" target="_blank">Resume</a>
+        </div>
+        <h2 data-cat="about.txt">About</h2>
         <div class="about">
-      CS & Ivey Business Student at Western University, building Full Stack software. 
+      CS & Ivey Business Student at Western University, building Full Stack software.
       Experience building consumer applications, healthcare billing services, predictive analytics systems, and internal developer tools.
         </div>
-        <h2>Experience</h2>
+        <h2 data-cat="experience.txt">Experience</h2>
         <ul class="experience">
             <li>
                 <span class="experience-title">
-                  <a href="https://pointclickcare.com/" target="_blank">PointClickCare</a>
-                   — Software Engineering Intern (Product)</span>
+                  <a class="experience-company" href="https://pointclickcare.com/" target="_blank">PointClickCare</a><span class="experience-dash"> — </span><span class="experience-role">Software Engineering Intern (Product)</span></span>
                 <span class="experience-date">May 2026 - Aug 2026</span>
             </li>
             <li>
                 <span class="experience-title">
-                  <a href="https://pointclickcare.com/" target="_blank">PointClickCare</a>
-                   — Software Engineering Intern (Platform)</span>
+                  <a class="experience-company" href="https://pointclickcare.com/" target="_blank">PointClickCare</a><span class="experience-dash"> — </span><span class="experience-role">Software Engineering Intern (Platform)</span></span>
                 <span class="experience-date">May 2025 - Aug 2025</span>
             </li>
             <li>
                 <span class="experience-title">
-                  <a href="https://www.planinternational.org/" target="_blank">Plan International</a>
-                   — Software Engineer (Pro Bono)</span>
+                  <a class="experience-company" href="https://www.planinternational.org/" target="_blank">Plan International</a><span class="experience-dash"> — </span><span class="experience-role">Software Engineer (Pro Bono)</span></span>
                 <span class="experience-date">Sep 2025 - Apr 2026</span>
             </li>
             <li>
                 <span class="experience-title">
-                  <a href="https://github.com/TenacityLabs" target="_blank">Tenacity Labs</a>
-                   — Software Engineer</span>
+                  <a class="experience-company" href="https://github.com/TenacityLabs" target="_blank">Tenacity Labs</a><span class="experience-dash"> — </span><span class="experience-role">Software Engineer</span></span>
                 <span class="experience-date">Apr 2024 - May 2025</span>
             </li>
         </ul>
-        <h2>Projects</h2>
+        <h2 data-cat="projects.txt">Projects</h2>
         <ul class="projects">
             <li>
                 <a href="https://github.com/andrewhdurnford/sunflower-nextjs" target="_blank">
-                <span>Sunflower Capital — Landing page built with Next.js</span>
+                <span class="project-name">Sunflower Capital</span><span class="project-dash"> — </span><span class="project-desc">Landing page built with Next.js</span>
                 </a>
             </li>
             <li>
                 <a href="https://spotify.andrewdurnford.com" target="_blank">
-                <span>Spotify Tracker — Next.js/FastAPI spotify stat tracker</span>
+                <span class="project-name">Spotify Tracker</span><span class="project-dash"> — </span><span class="project-desc">Next.js/FastAPI spotify stat tracker</span>
                 </a>
             </li>
             <li>
                 <a href="https://zetamac.andrewdurnford.com" target="_blank">
-                <span>Zetamac — Mental math practice game</span>
+                <span class="project-name">Zetamac</span><span class="project-dash"> — </span><span class="project-desc">Mental math practice game</span>
                 </a>
             </li>
             <li>
                 <a href="https://github.com/andrewhdurnford/valPRED" target="_blank">
-                <span>ValPRED — Valorant professional match predictor using Python, Pandas, Sklearn</span>
+                <span class="project-name">ValPRED</span><span class="project-dash"> — </span><span class="project-desc">Valorant professional match predictor using Python, Pandas, Sklearn</span>
                 </a>
             </li>
             <li>
                 <a href="https://github.com/TenacityLabs/unfollowed.lol" target="_blank">
-                <span>Unfollowed.lol — Chrome extension tracking Instagram followers & unfollowers</span>
+                <span class="project-name">Unfollowed.lol</span><span class="project-dash"> — </span><span class="project-desc">Chrome extension tracking Instagram followers & unfollowers</span>
                 </a>
             </li>
             <li>
                 <a href="https://github.com/TenacityLabs/retrospect-frontend" target="_blank">
-                <span>Retrospect Mobile App — Swift mobile app to create and share time capsules</span>
+                <span class="project-name">Retrospect Mobile App</span><span class="project-dash"> — </span><span class="project-desc">Swift mobile app to create and share time capsules</span>
                 </a>
             </li>
         </ul>
     </main>
-    <div class="links">
-        <a class="textLink" href="https://github.com/andrewhdurnford" target="_blank">GitHub</a>
-        <span class="dot">•</span>
-        <a class="textLink" href="https://www.linkedin.com/in/durnford/" target="_blank">LinkedIn</a>
-        <span class="dot">•</span>
-        <a class="textLink" href="mailto:andrewhdurnford@gmail.com" target="_blank">Email</a>
-        <span class="dot">•</span>
-        <a class="textLink" href="./resume.pdf" target="_blank">Resume</a>
-    </div>
   <Analytics />
 </Layout>
 
 <script>
 	const nameEl = document.getElementById('typed-name') as HTMLElement;
-	const fullName = 'Andrew Durnford. ';
+	const cursorEl = document.querySelector('.cursor') as HTMLElement;
+	const fullName = 'Andrew Durnford ';
 	let i = 0;
 	function typeName() {
 		if (i <= fullName.length) {
 			nameEl.textContent = fullName.slice(0, i);
 			i++;
-			setTimeout(typeName, 110 + Math.random() * 80);
+			setTimeout(typeName, 80 + Math.random() * 40);
+		} else {
+			setTimeout(() => cursorEl.classList.add('cursor-done'), 3000);
 		}
 	}
 	typeName();
@@ -103,7 +102,6 @@ import Analytics from '@vercel/analytics/astro'
     main {
         margin: auto 0;
         padding: 1rem;
-        padding-bottom: 6rem;
         width: 700px;
         max-width: calc(100% - 4rem);
         color: white;
@@ -131,9 +129,24 @@ import Analytics from '@vercel/analytics/astro'
         font-size: 1.5rem;
     }
 
+    body:not(.crt-text-off) main h2:not(:first-of-type) {
+        font-size: 0;
+        margin: 0.83rem 0;
+    }
+
     body:not(.crt-text-off) main h2:not(:first-of-type)::before {
-        content: "> ";
+        content: "$ cat " attr(data-cat);
+        display: block;
+        font-size: 0.85rem;
+        line-height: normal;
         color: #63727a;
+    }
+
+    body.crt-text-off main h2:not(:first-of-type) {
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
     }
 
     body.crt-text-off .cursor {
@@ -151,7 +164,13 @@ import Analytics from '@vercel/analytics/astro'
             0 0 0.4em rgba(244, 244, 249, 0.6),
             3px 0 6px rgba(255, 0, 255, 0.35),
             -3px 0 6px rgba(0, 255, 255, 0.35);
-        animation: cursor-blink 1s steps(1) infinite;
+        animation: cursor-blink 1s steps(1) 6 forwards;
+        transition: opacity 0.5s;
+    }
+
+    .cursor.cursor-done {
+        animation: none;
+        opacity: 0;
     }
 
     @keyframes cursor-blink {
@@ -161,7 +180,7 @@ import Analytics from '@vercel/analytics/astro'
 
     .about {
         font-family: "Lilex";
-        font-size: 1rem;
+        font-size: 0.85rem;
         font-weight: 300;
         line-height: 1.75;
         color: #F4F4F9;
@@ -174,24 +193,29 @@ import Analytics from '@vercel/analytics/astro'
     }
   }
 
+    body:not(.crt-text-off) .about {
+        text-align: left;
+    }
+
     .links {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: flex-end;
+        justify-content: flex-start;
+        align-items: center;
         gap: 0.75rem;
-        padding-bottom: 1.5rem;
-        height: 7rem;
-        background: linear-gradient(to bottom, transparent, #001A23 65%);
-        z-index: 1;
+        margin: 1.25rem 0;
     }
 
     .dot {
         color: #D1D1D7;
         font-size: 0.7rem;
+    }
+
+    body:not(.crt-text-off) .links {
+        justify-content: flex-start;
+    }
+
+    body:not(.crt-text-off) .textLink {
+        font-size: 0.85rem;
     }
 
     a:link, a:visited {
@@ -226,26 +250,112 @@ import Analytics from '@vercel/analytics/astro'
         line-height: 2;
     }
 
-    .experience {
+    .experience,
+    .projects {
         display: flex;
         flex-direction: column;
         gap: 10px;
+    }
+
+    body:not(.crt-text-off) .experience li,
+    body:not(.crt-text-off) .projects li {
+        position: relative;
+        padding-left: 1.1em;
+    }
+
+    body:not(.crt-text-off) .experience li::before,
+    body:not(.crt-text-off) .projects li::before {
+        content: "❯";
+        position: absolute;
+        left: 0;
+        color: #63727a;
     }
 
     .experience li {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
+        gap: 1rem;
     }
-
 
     .experience-title {
         color: #F4F4F9;
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .experience-date {
         font-weight: 300;
         color: #D1D1D7;
         font-style: italic;
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 500px) {
+        .experience li {
+            flex-wrap: wrap;
+            align-items: baseline;
+            row-gap: 2px;
+        }
+
+        .experience-title {
+            display: contents;
+        }
+
+        .experience-company {
+            order: 1;
+            white-space: nowrap;
+        }
+
+        .experience-dash {
+            display: none;
+        }
+
+        .experience-date {
+            order: 2;
+        }
+
+        .experience-role {
+            order: 3;
+            flex-basis: 100%;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .projects li a {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    @media (max-width: 500px) {
+        .projects li a {
+            white-space: normal;
+            overflow: visible;
+        }
+
+        .project-name {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .project-dash {
+            display: none;
+        }
+
+        .project-desc {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     }
 </style>
