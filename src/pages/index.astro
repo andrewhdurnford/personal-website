@@ -6,21 +6,26 @@ import Analytics from '@vercel/analytics/astro'
 
 <Layout title="Andrew Durnford">
     <main>
-        <h2><span id="typed-name"></span><span class="cursor"></span></h2>
-        <div class="links">
-            <a class="textLink" href="https://github.com/andrewhdurnford" target="_blank">GitHub</a>
-            <span class="dot">/</span>
-            <a class="textLink" href="https://www.linkedin.com/in/durnford/" target="_blank">LinkedIn</a>
-            <span class="dot">/</span>
-            <a class="textLink" href="mailto:andrewhdurnford@gmail.com" target="_blank">Email</a>
-            <span class="dot">/</span>
-            <a class="textLink" href="./resume.pdf" target="_blank">Resume</a>
+        <div class="reveal">
+            <h2><span id="typed-name"></span><span class="cursor"></span></h2>
+            <div class="links">
+                <a class="textLink" href="https://github.com/andrewhdurnford" target="_blank">GitHub</a>
+                <span class="dot">/</span>
+                <a class="textLink" href="https://www.linkedin.com/in/durnford/" target="_blank">LinkedIn</a>
+                <span class="dot">/</span>
+                <a class="textLink" href="mailto:andrewhdurnford@gmail.com" target="_blank">Email</a>
+                <span class="dot">/</span>
+                <a class="textLink" href="./resume.pdf" target="_blank">Resume</a>
+            </div>
         </div>
-        <h2 data-cat="about.txt">About</h2>
-        <div class="about">
-      CS & Ivey Business Student at Western University, building Full Stack software.
-      Experience building consumer applications, healthcare billing services, predictive analytics systems, and internal developer tools.
+        <div class="reveal">
+            <h2 data-cat="about.txt">About</h2>
+            <div class="about">
+          CS & Ivey Business Student at Western University, building Full Stack software.
+          Experience building consumer applications, healthcare billing services, predictive analytics systems, and internal developer tools.
+            </div>
         </div>
+        <div class="reveal">
         <h2 data-cat="experience.txt">Experience</h2>
         <ul class="experience">
             <li>
@@ -44,6 +49,8 @@ import Analytics from '@vercel/analytics/astro'
                 <span class="experience-date">Apr 2024 - May 2025</span>
             </li>
         </ul>
+        </div>
+        <div class="reveal">
         <h2 data-cat="projects.txt">Projects</h2>
         <ul class="projects">
             <li>
@@ -82,6 +89,7 @@ import Analytics from '@vercel/analytics/astro'
                 </a>
             </li>
         </ul>
+        </div>
     </main>
   <Analytics />
 </Layout>
@@ -100,7 +108,7 @@ import Analytics from '@vercel/analytics/astro'
 			setTimeout(() => cursorEl.classList.add('cursor-done'), 3000);
 		}
 	}
-	typeName();
+	setTimeout(typeName, 800);
 </script>
 
 <style>
@@ -113,7 +121,31 @@ import Analytics from '@vercel/analytics/astro'
         font-size: 20px;
         line-height: 1.6;
     }
-  
+
+    main .reveal {
+        opacity: 0;
+        transform: translateY(6px);
+        animation: content-in 0.5s ease-out forwards;
+    }
+
+    main .reveal:nth-of-type(1) { animation-delay: 0.3s; }
+    main .reveal:nth-of-type(2) { animation-delay: 0.5s; }
+    main .reveal:nth-of-type(3) { animation-delay: 0.7s; }
+    main .reveal:nth-of-type(4) { animation-delay: 0.9s; }
+
+    @keyframes content-in {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        main .reveal {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+    }
+
     body::before {
       content: '';
       position: fixed;
@@ -134,12 +166,12 @@ import Analytics from '@vercel/analytics/astro'
         font-size: 1.5rem;
     }
 
-    body:not(.crt-text-off) main h2:not(:first-of-type) {
+    body:not(.crt-text-off) main h2[data-cat] {
         font-size: 0;
         margin: 0.83rem 0;
     }
 
-    body:not(.crt-text-off) main h2:not(:first-of-type)::before {
+    body:not(.crt-text-off) main h2[data-cat]::before {
         content: "$ cat " attr(data-cat);
         display: block;
         font-size: 0.85rem;
@@ -147,7 +179,7 @@ import Analytics from '@vercel/analytics/astro'
         color: #63727a;
     }
 
-    body.crt-text-off main h2:not(:first-of-type) {
+    body.crt-text-off main h2[data-cat] {
         font-size: 0.85rem;
         font-weight: 700;
         letter-spacing: 0.08em;
